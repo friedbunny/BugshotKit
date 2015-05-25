@@ -30,7 +30,7 @@
 
         self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOpacity = 1.0f;
+        self.layer.shadowOpacity = 0.4f;
         self.layer.shadowRadius = 4.0f;
     }
     return self;
@@ -87,7 +87,7 @@
         self.layer.shadowOpacity = 0.0f;
         return;
     } else {
-        self.layer.shadowOpacity = 1.0f;
+        self.layer.shadowOpacity = 0.4f;
     }
     
     [self.annotationFillColor setFill];
@@ -95,7 +95,7 @@
     CGFloat tailWidth = MAX(4.0f, arrowLength * 0.07f);
     CGFloat headLength = MAX(arrowLength / 3.0f, 10.0f);
     CGFloat headWidth = headLength * 0.9f;
-    CGFloat strokeWidth = MAX(1.0f, tailWidth * 0.25f);
+    CGFloat strokeWidth = MIN(3.0f, MAX(1.0f, tailWidth * 0.25f));
     
     self.layer.shadowRadius = MAX(4.0f, tailWidth * 0.25f);
 
