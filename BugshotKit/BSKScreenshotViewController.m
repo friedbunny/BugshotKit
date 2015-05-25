@@ -64,7 +64,7 @@
             [[UIBezierPath bezierPathWithRoundedRect:boxRect cornerRadius:4.0f] stroke];
         });
         
-        CGSize blurIconSize = CGSizeMake(20, 20);
+        /*CGSize blurIconSize = CGSizeMake(20, 20);
         UIImage *blurIcon = BSKImageWithDrawing(blurIconSize, ^{
             [UIColor.blackColor setStroke];
             [UIColor.blackColor setFill];
@@ -79,13 +79,13 @@
             quarterRect.origin.x += blurRect.size.width / 2.0f;
             quarterRect.origin.y += blurRect.size.width / 2.0f;
             [[UIBezierPath bezierPathWithRect:quarterRect] fill];
-        });
+        });*/
         
         arrowIcon.accessibilityLabel = @"Arrow";
         boxIcon.accessibilityLabel   = @"Box";
         boxIcon.accessibilityLabel   = @"Blur";
         
-        UISegmentedControl *annotationPicker = [[UISegmentedControl alloc] initWithItems:@[ arrowIcon, boxIcon, blurIcon ]];
+        UISegmentedControl *annotationPicker = [[UISegmentedControl alloc] initWithItems:@[ arrowIcon, boxIcon/*, blurIcon*/ ]];
         annotationPicker.accessibilityLabel = @"Drawing tool";
         annotationPicker.tintColor = BugshotKit.sharedManager.annotationFillColor;
         
@@ -94,7 +94,7 @@
         
         [annotationPicker setWidth:65.0f forSegmentAtIndex:kAnnotationToolArrow];
         [annotationPicker setWidth:65.0f forSegmentAtIndex:kAnnotationToolBox];
-        [annotationPicker setWidth:65.0f forSegmentAtIndex:kAnnotationToolBlur];
+        //[annotationPicker setWidth:65.0f forSegmentAtIndex:kAnnotationToolBlur];
         
         [self annotationPickerPicked:annotationPicker];
         [annotationPicker addTarget:self action:@selector(annotationPickerPicked:) forControlEvents:UIControlEventValueChanged];
