@@ -15,7 +15,7 @@
         self.opaque = NO;
         self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOpacity = 1.0f;
+        self.layer.shadowOpacity = 0.4f;
         self.layer.shadowRadius = 4.0f;
     }
     return self;
@@ -25,11 +25,11 @@
 {
     [super setFrame:frame];
 
-    _borderWidth = MAX(6.0f, MIN(16.0f, MIN(frame.size.width, frame.size.height) * 0.075f));
+    _borderWidth = MAX(4.0f, MIN(10.0f, MIN(frame.size.width, frame.size.height) * 0.075f));
     _cornerRadius = _borderWidth * 2.0f;
-    _strokeWidth = MAX(2.0f, _borderWidth * 0.25f);
+    _strokeWidth = MAX(1.0f, _borderWidth * 0.25f);
 
-    self.layer.shadowRadius = MAX(4.0f, _borderWidth * 0.33f);
+    self.layer.shadowRadius = MAX(4.0f, _borderWidth * 0.25f);
 }
 
 - (void)drawRect:(CGRect)rect
