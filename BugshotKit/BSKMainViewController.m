@@ -56,8 +56,6 @@ static UIImage *rotateIfNeeded(UIImage *src);
 {
     [super viewDidLoad];
 
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[BugshotKit sharedManager].annotationFillColor}];
-
     CGSize chevronSize = CGSizeMake(15, 30);
     UIImage *chevronImage = BSKImageWithDrawing(chevronSize, ^{
         CGRect chevronBounds = CGRectMake(0, 0, chevronSize.width, chevronSize.height);
