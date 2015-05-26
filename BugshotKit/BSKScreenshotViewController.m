@@ -99,6 +99,9 @@
         [self annotationPickerPicked:annotationPicker];
         [annotationPicker addTarget:self action:@selector(annotationPickerPicked:) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = annotationPicker;
+        
+        UIBarButtonItem *clearButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearAnnotations:)];
+        self.navigationItem.rightBarButtonItem = clearButton;
 
         self.contentAreaTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentAreaTapped:)];
     }
@@ -183,6 +186,23 @@
 - (void)annotationPickerPicked:(UISegmentedControl *)sender
 {
     annotationToolChosen = (int) sender.selectedSegmentIndex;
+}
+
+- (void)clearAnnotations:(__unused UIBarButtonItem *)sender
+{
+    for (UIView *annotation in self.view.subviews) {
+        if ([annotation isKindOfClass:BSKAnnotationView.class])
+        {
+            [UIView animateWithDuration:0.1f
+                                  delay:0
+                                options: UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 annotation.layer.opacity = 0;
+                             } completion:^(BOOL finished) {
+                                 [annotation removeFromSuperview];
+                             }];
+        }
+    }
 }
 
 #pragma mark - Touch handling
