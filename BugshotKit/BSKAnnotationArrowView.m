@@ -30,7 +30,6 @@
 
         self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOpacity = 0.4f;
         self.layer.shadowRadius = 4.0f;
     }
     return self;
@@ -43,7 +42,7 @@
     [super initialScaleDone];
     initialScaleDone = YES;
     
-    if (arrowLength < kMinimumArrowLength) [self removeFromSuperview];
+    if (arrowLength < kMinimumArrowLength) arrowLength = kMinimumArrowLength;
 }
 
 - (void)setStartedDrawingAtPoint:(CGPoint)startedDrawingAtPoint
@@ -87,7 +86,7 @@
         self.layer.shadowOpacity = 0.0f;
         return;
     } else {
-        self.layer.shadowOpacity = 0.4f;
+        self.layer.shadowOpacity = 0.3f;
     }
     
     [self.annotationFillColor setFill];
